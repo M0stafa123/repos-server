@@ -13,6 +13,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(router);
+app.get("/", (req, res) => {
+  res.send("welcom");
+});
 app.listen(port, async () => {
   console.log("server runing on https://localhost:" + port);
 });
