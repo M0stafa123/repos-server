@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 mongoose.connect(process.env.URI as string);
 
-const port = 5000;
+const port = 1000;
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
