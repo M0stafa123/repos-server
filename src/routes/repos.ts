@@ -17,10 +17,9 @@ const upload = multer({ storage });
 reposRoute.post("/:id", upload.single("preview"), async (req, res) => {
   try {
     const { name, live, github } = req.body;
-    const preview = req.file?.path.split("/")[1];
+    const preview = req.file?.path;
     console.log(preview);
     console.log(req.body);
-    console.log(req.file?.path);
     const Techs = req.body.Techs.split("-");
     const newRepo = await Repo.create({
       userID: req.params.id,
