@@ -19,6 +19,7 @@ reposRoute.post("/:id", upload.single("preview"), async (req, res) => {
     const { name, live, github } = req.body;
     const preview = req.file?.path.split("\\")[1];
     console.log(preview);
+    console.log(req.body);
     console.log(req.file?.path);
     const Techs = req.body.Techs.split("-");
     const newRepo = await Repo.create({
