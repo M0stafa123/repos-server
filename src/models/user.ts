@@ -4,6 +4,7 @@ const User = mongoose.model(
   "user",
   new Schema({
     name: String,
+    role: String,
   })
 );
 

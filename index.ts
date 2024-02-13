@@ -13,9 +13,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(router);
+app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.send("welcom");
 });
 app.listen(port, async () => {
-  console.log("server runing on https://localhost:" + port);
+  console.log("server runing on http://localhost:" + port);
 });
