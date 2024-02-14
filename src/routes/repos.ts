@@ -5,16 +5,35 @@ import multer from "multer";
 const reposRoute = express.Router();
 reposRoute.use(bodyParser.json());
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    return cb(null, "./public");
-  },
-  filename: (req, file, cb) => {
-    return cb(null, `${Date.now()}-${file.originalname}`);
-  },
-});
-const upload = multer({ storage });
-reposRoute.post("/:id", upload.single("preview"), async (req, res) => {
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     return cb(null, "./public");
+//   },
+//   filename: (req, file, cb) => {
+//     return cb(null, `${Date.now()}-${file.originalname}`);
+//   },
+// });
+// const upload = multer({ storage });
+// reposRoute.post("/:id", upload.single("preview"), async (req, res) => {
+//   try {
+//     const { name, live, github } = req.body;
+//     const preview = req.file?.path.split("/").pop();
+//     const Techs = req.body.Techs.split("-");
+//     const newRepo = await Repo.create({
+//       userID: req.params.id,
+//       preview,
+//       name,
+//       Techs,
+//       live,
+//       github,
+//     });
+//     res.status(200).send(newRepo);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send(error);
+//   }
+// });
+reposRoute.post("/:id", async (req, res) => {
   try {
     const { name, live, github } = req.body;
     const preview = req.file?.path.split("/").pop();
