@@ -35,8 +35,7 @@ reposRoute.use(bodyParser.json());
 // });
 reposRoute.post("/:id", async (req, res) => {
   try {
-    const { name, live, github } = req.body;
-    const preview = req.file?.path.split("/").pop();
+    const { name, live, github, preview } = req.body;
     const Techs = req.body.Techs.split("-");
     const newRepo = await Repo.create({
       userID: req.params.id,
